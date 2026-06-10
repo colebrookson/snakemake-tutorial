@@ -1,13 +1,23 @@
-SAMPLES = ["A", "B"]
+configfile: "config.yaml"
 
-rule bwa_map: 
-    input: 
+rule all: 
+    input: "plots/quals.svg"
+
+def get_bwa_map_input_fastqs(wildcards):
+    return config["samples"][wildcards.sample]
+
+rule bwa_map:
+    input:
         "data/genome.fa",
-        "data/samples/{sample}.fastq"
-    output: 
+        get_bwa_map_input_fastqs
+    output:
         "mapped_reads/{sample}.bam"
-    shell: 
-        "bwa mem {input} | samtools view -Sb - > {output}"
+    params:
+        rg=r"@RG/tID:{sample}\tSM:{sample}"
+    threads: 8
+    shell:
+        "bwa mem -R '{params.rg}' -t {threads} {input} "
+        "| samtools view -Sb - > {output}"
 
 rule samtools_sort: 
     input: 
@@ -29,13 +39,13 @@ rule samtools_index:
 rule bcftools_call: 
     input: 
         fa="data/genome.fa",
-        bam=expand("sorted_reads/{sample}.bam", sample=SAMPLES),
-        bai=expand("sorted_reads/{sample}.bam.bai",sample=SAMPLES)
+        bam=expand("sorted_reads/{sample}.bam", sample=config["samples"]),
+        bai=expand("sorted_reads/{sample}.bam.bai", sample=config["samples"])
     output: 
         "calls/all.vcf"
     shell: 
         "bcftools mpileup -f {input.fa} {input.bam} | "
-        "bcftools call -mv - > {output}"
+        "bcftools call {config[params][prior_mutation_rate]} -mv - > {output}"
 
 rule plot_quals: 
     input: 
