@@ -1,0 +1,42 @@
+Assuming unrestricted shared filesystem usage.
+
+SNAKEMAKE
+=========
+  Date: 2026-06-09 12:59:12
+  Workflow ID: 43ce6c07-92b2-4642-a0be-73659b44e6fb
+  Platform: macOS-14.6.1-arm64-arm-64bit
+  Host: GU-AL-YQ2704J
+  User: colebrookson
+  Snakemake version: 9.22.0
+  Python version: 3.12.13 | packaged by conda-forge | (main, Mar  5 2026, 17:06:14) [Clang 19.1.7 ]
+  Command: /Users/colebrookson/github/snakemake-tutorial/.pixi/envs/default/bin/snakemake --cores 1 mapped_reads/A.bam
+  Snakefile: /Users/colebrookson/github/snakemake-tutorial/Snakefile
+  Base directory: /Users/colebrookson/github/snakemake-tutorial
+  Run directory: /Users/colebrookson/github/snakemake-tutorial
+  Working directory: /Users/colebrookson/github/snakemake-tutorial
+  Config file(s): []
+  Config MD5: 99914b932bd37a50b983c5e7c90ae93b
+
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Job stats:
+job        count
+-------  -------
+bwa_map        1
+total          1
+
+Select jobs to execute...
+Execute 1 jobs...
+[Tue Jun  9 12:59:13 2026]
+localrule bwa_map:
+    input: data/genome.fa, data/samples/A.fastq
+    output: mapped_reads/A.bam
+    jobid: 0
+    reason: Missing output files: mapped_reads/A.bam
+    resources: tmpdir=/var/folders/gf/vqpg0mb5685bzy_5bq112z1w0000gn/T
+[Tue Jun  9 12:59:13 2026]
+Finished jobid: 0 (Rule: bwa_map)
+1 of 1 steps (100%) done
+Complete log(s): /Users/colebrookson/github/snakemake-tutorial/.snakemake/log/2026-06-09T125912.009292.snakemake.log
