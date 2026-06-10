@@ -1,0 +1,3 @@
+SyntaxError in file "/Users/colebrookson/github/snakemake-tutorial/Snakefile", line 31:
+invalid syntax. Perhaps you forgot a comma?:
+				fa = "data/genome.fa"
