@@ -1,0 +1,21 @@
+Assuming unrestricted shared filesystem usage.
+
+SNAKEMAKE
+=========
+  Date: 2026-06-10 12:39:55
+  Workflow ID: 0114696b-586e-4b44-a4c1-0cf438466dee
+  Platform: macOS-14.6.1-arm64-arm-64bit
+  Host: GU-AL-YQ2704J
+  User: colebrookson
+  Snakemake version: 9.22.0
+  Python version: 3.12.13 | packaged by conda-forge | (main, Mar  5 2026, 17:06:14) [Clang 19.1.7 ]
+  Command: /Users/colebrookson/github/snakemake-tutorial/.pixi/envs/default/bin/snakemake mapped_reads/A.bam --cores 2
+  Snakefile: /Users/colebrookson/github/snakemake-tutorial/Snakefile
+  Base directory: /Users/colebrookson/github/snakemake-tutorial
+  Run directory: /Users/colebrookson/github/snakemake-tutorial
+  Working directory: /Users/colebrookson/github/snakemake-tutorial
+  Config file(s): ['config.yaml']
+  Config MD5: fabd1ad0a7a2f2e6540901cc4c7c1280
+
+Building DAG of jobs...
+Nothing to be done (all requested files are present and up to date).

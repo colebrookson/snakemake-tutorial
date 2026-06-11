@@ -1,0 +1,76 @@
+Assuming unrestricted shared filesystem usage.
+
+SNAKEMAKE
+=========
+  Date: 2026-06-10 12:33:16
+  Workflow ID: fc2259a0-4bc6-4fd3-956b-468422b2ff9d
+  Platform: macOS-14.6.1-arm64-arm-64bit
+  Host: GU-AL-YQ2704J
+  User: colebrookson
+  Snakemake version: 9.22.0
+  Python version: 3.12.13 | packaged by conda-forge | (main, Mar  5 2026, 17:06:14) [Clang 19.1.7 ]
+  Command: /Users/colebrookson/github/snakemake-tutorial/.pixi/envs/default/bin/snakemake --cores 2 --forceall
+  Snakefile: /Users/colebrookson/github/snakemake-tutorial/Snakefile
+  Base directory: /Users/colebrookson/github/snakemake-tutorial
+  Run directory: /Users/colebrookson/github/snakemake-tutorial
+  Working directory: /Users/colebrookson/github/snakemake-tutorial
+  Config file(s): ['config.yaml']
+  Config MD5: fabd1ad0a7a2f2e6540901cc4c7c1280
+
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 2
+Rules claiming more threads will be scaled down.
+Job stats:
+job               count
+--------------  -------
+bwa_map               3
+samtools_sort         3
+samtools_index        3
+bcftools_call         1
+plot_quals            1
+all                   1
+total                12
+
+Select jobs to execute...
+Execute 1 jobs...
+[Wed Jun 10 12:33:16 2026]
+localrule bwa_map:
+    input: data/genome.fa, data/samples/C.fastq
+    output: mapped_reads/C.bam
+    log: logs/bwa_mem/C.log
+    jobid: 8
+    reason: Forced execution
+    wildcards: sample=C
+    threads: 2
+    resources: tmpdir=/var/folders/gf/vqpg0mb5685bzy_5bq112z1w0000gn/T
+RuleException:
+CalledProcessError in file "/Users/colebrookson/github/snakemake-tutorial/Snakefile", line 22:
+Command 'set -euo pipefail;  (bwa mem -R '@RG/tID:C\tSM:C' -t 2 data/genome.fa data/samples/C.fastq | samtools view -Sb - > mapped_reads/C.bam) 2> logs/bwa_mem/C.log' returned non-zero exit status 1.
+[Wed Jun 10 12:33:16 2026]
+Error in rule bwa_map:
+    message: None
+    jobid: 8
+    input: data/genome.fa, data/samples/C.fastq
+    output: mapped_reads/C.bam
+    log: logs/bwa_mem/C.log (check log file(s) for error details)
+    shell:
+        (bwa mem -R '@RG/tID:C\tSM:C' -t 2 data/genome.fa data/samples/C.fastq | samtools view -Sb - > mapped_reads/C.bam) 2> logs/bwa_mem/C.log
+        (command exited with non-zero exit code)
+Removing output files of failed job bwa_map since they might be corrupted:
+mapped_reads/C.bam
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look below for error messages
+[Wed Jun 10 12:33:16 2026]
+Error in rule bwa_map:
+    message: None
+    jobid: 8
+    input: data/genome.fa, data/samples/C.fastq
+    output: mapped_reads/C.bam
+    log: logs/bwa_mem/C.log (check log file(s) for error details)
+    shell:
+        (bwa mem -R '@RG/tID:C\tSM:C' -t 2 data/genome.fa data/samples/C.fastq | samtools view -Sb - > mapped_reads/C.bam) 2> logs/bwa_mem/C.log
+        (command exited with non-zero exit code)
+Complete log(s): /Users/colebrookson/github/snakemake-tutorial/.snakemake/log/2026-06-10T123316.345933.snakemake.log
+WorkflowError:
+At least one job did not complete successfully.
